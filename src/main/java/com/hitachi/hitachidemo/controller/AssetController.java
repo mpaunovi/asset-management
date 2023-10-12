@@ -19,28 +19,28 @@ public class AssetController {
 
     // Create Asset API
     @PostMapping
-    public ResponseEntity<AssetDTO> createEmployee(@RequestBody AssetDTO assetDTO) {
+    public ResponseEntity<AssetDTO> createAsset(@RequestBody AssetDTO assetDTO) {
         AssetDTO savedAsset = assetService.createAsset(assetDTO);
         return new ResponseEntity<>(savedAsset, HttpStatus.CREATED);
     }
 
     // Get Asset API
     @GetMapping("{id}")
-    public ResponseEntity<AssetDTO> getEmployee(@PathVariable("id") Long assetId) {
+    public ResponseEntity<AssetDTO> getAsset(@PathVariable("id") Long assetId) {
         AssetDTO assetDTO = assetService.getAssetById(assetId);
         return ResponseEntity.ok(assetDTO);
     }
 
     // Get all Assets API
     @GetMapping
-    public ResponseEntity<List<AssetDTO>> getAllEmployees() {
+    public ResponseEntity<List<AssetDTO>> getAllAsset() {
         List<AssetDTO> assets = assetService.getAllAssets();
         return ResponseEntity.ok(assets);
     }
 
     // Update Asset API
     @PutMapping("{id}")
-    public ResponseEntity<AssetDTO> updateEmployee(@PathVariable("id") Long assetId,
+    public ResponseEntity<AssetDTO> updateAsset(@PathVariable("id") Long assetId,
                                                       @RequestBody AssetDTO updateAsset) {
         AssetDTO updatedAsset = assetService.updateAsset(assetId, updateAsset);
         return ResponseEntity.ok(updatedAsset);
@@ -48,7 +48,7 @@ public class AssetController {
 
     // Delete Asset API
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long assetId) {
+    public ResponseEntity<String> deleteAsset(@PathVariable("id") Long assetId) {
         assetService.deleteAsset(assetId);
         return ResponseEntity.ok("Asset with id " + assetId + " deleted successfully.");
     }
